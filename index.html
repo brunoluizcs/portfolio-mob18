@@ -1,0 +1,195 @@
+<html>
+    <header>
+        <title>Portifólio Bruno Santos</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <link rel="stylesheet" href="./css//container.css"/>
+        <link rel="stylesheet" href="./css/section.css"/>
+        <link rel="stylesheet" href="./css/profile.css">
+        <link rel="stylesheet" href="./css/skills.css">
+        <link rel="stylesheet" href="./css/contact.css">
+        <link rel="stylesheet" href="./css/header.css"/>
+        <link rel="stylesheet" href="./css/footer.css"/>
+
+        <script src="./js/email.js"></script>
+
+    </header>
+
+    <body>
+        <header>
+            <div class="header">
+                <img class="logo" href="#" src="./img/avatar.jpeg" alt="Bruno Santos"/>
+                <nav id="navigation" class="header-right">
+                    <a class="navItem active" href="#profile">Perfil</a>
+                    <a class="navItem" href="#skills">Habilidades</a>
+                    <a class="navItem" href="#contact">Contato</a>
+                </nav>
+            </div>
+        </header>
+            
+    
+        <div class="content">
+            <section id="profile" class="container profile">
+                <div class="profile-left">
+                    <img class="profile" src="./img/profile.jpg" alt="Bruno Santos Profile"/>
+                </div>
+                <div class="profile-right">
+                    <p class="profile-title">
+                        Bruno Santos
+                    </p>
+                    <p>
+                      Tecnólogo em Análise e Desenvolvimento de Sistemas grande entusiasta de desenvolvimento para Android com experiência em desenvolvimento de software nas linguagens 
+                      Delphi, PHP, Java e Python focando em arquitetura e desenvolvimento de soluções multilinguagens, resilientes e escaláveis. Apaixonado por programação desde o meu primeiro Hello World.       
+                    </p>
+                </div>
+            </section>
+
+            <section id="skills" class="container skills">
+                    <div class="skills-left">
+                        <p class="skills-title">
+                            Habilidades
+                        </p>
+                        <p>
+                            Ao longo da minha tragetória como desenvolvedor de software tive contato com tecnologias e técnicas de desenvolvimento de software que podem ser acompanhadas no gráfico a seguir.
+                        </p>
+                    </div>
+                    <div class="skills-right">    
+                        <ul class="skills-list">
+                            <li>
+                                <span class="skills-name">Java</span>
+                                <div class="skills-container">
+                                    <div class="skills-values skill-java"><p>95%</p></div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="skills-name">Python</span>
+                                <div class="skills-container">
+                                    <div class="skills-values skill-python"><p>95%</p></div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="skills-name">Kotlin</span>
+                                <div class="skills-container">
+                                    <div class="skills-values skill-kotlin"><p>80%</p></div>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="skills-name">PHP</span>
+                                <div class="skills-container">
+                                    <div class="skills-values skill-php"><p>60%</p></div>
+                                </div>
+                            </li>                            
+                        </ul>
+                    </div>
+            </section>
+
+            <section id="contact" class="container contact" >
+                <div class="contact-form">
+                    <p class="contact-title">Contato</p>
+                    <form>
+                        <label for="edtName">Nome</label><br>
+                        <input type="text" id="edtName"/><br>
+
+                        <label for="edtAssunto">Assunto</label><br>
+                        <input type="text" id="edtAssunto"/><br>
+
+                        <label for="edtEmail">Email</label><br>
+                        <input type="text" id="edtEmail"/><br>
+
+                        <label for="edtMessage">Mensagem</label><br>
+                        <textarea rows="4" id="edtMessage">
+
+                        </textarea><br>
+
+                        <button id="buttonSend" onclick="enviarEmail()">Enviar</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+
+
+        <footer class="footer">
+            <div class="footer-container">
+                <a href="https://www.linkedin.com/in/bruno-santos-27095b22/" class="fa" target="_blank">
+                    <img width="80px" height="70px" src="./img/linkedin.png" alt="Linkedin Bruno Santos"></img>
+                </a>
+            </div>
+            
+        </footer>
+    
+    </body>
+
+
+    <script>
+        function navigate(){
+            const container = document.getElementById("navigation");
+            var items = container.getElementsByClassName("navItem");
+            for (var i = 0; i < items.length; i++) {
+                items[i].addEventListener("click", function() {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+                });
+            }
+        }    
+        navigate();
+
+
+
+        function enviarEmail(){
+            const name = document.getElementById("edtName")
+            const assunto = document.getElementById("edtAssunto")
+            const email = document.getElementById("edtEmail")
+            const mensagem = document.getElementById("edtMessage")
+            const button = document.getElementById("buttonSend")
+            var isError = false
+
+            name.classList.remove("error")
+            assunto.classList.remove("error")
+            email.classList.remove("error")
+            mensagem.classList.remove("error")
+            
+            if(name.value.trim() == ""){
+                name.classList.add("error")
+                isError = true
+            } 
+            if(assunto.value.trim() == ""){
+                assunto.classList.add("error")
+                isError = true
+            }
+
+            if(email.value.trim() == ""){
+                email.classList.add("error")
+                isError = true
+            }
+
+            if  (mensagem.value.trim() == ""){
+                mensagem.classList.add("error")
+                isError = true
+            }
+
+            if(! isError){
+                button.disabled = true
+                sendEmail(name.value, assunto.value, email.value, mensagem.value)
+                .then((data) => {
+                    button.disabled = false
+                    name.value = ""
+                    assunto.value = ""
+                    email.value = ""
+                    mensagem.value = ""
+                    alert("Email enviado com sucesso, obrigado por entrar em contato")
+                    
+                    console.log(data);
+                    return data;
+                })
+                .catch(err => {
+                    button.disabled = true
+                    alert("Ocorreu uma falha ao enviar o e-mail")
+                    console.error(err)
+                })
+            }
+        }
+    </script>
+
+</html>

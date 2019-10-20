@@ -1,0 +1,24 @@
+footer {
+    width: 100%;
+    background-color: #cccccc;
+    color: white;
+  }
+  .footer-container{
+    
+    padding: 10px;
+  }
+
+ 
+
+  .fa {
+    padding: 20px;
+    font-size: 30px;
+    width: 50px;
+    text-align: center;
+    text-decoration: none;
+    margin: 5px 2px;
+  }
+  
+  .fa:hover {
+      opacity: 0.7;
+  }

@@ -1,0 +1,90 @@
+
+.skills{
+    background-color: f1f1f1;
+}
+
+.skills-title{
+    font-size: 30px;
+    padding: 10px;
+}
+
+.skills p{
+    padding: 20px 20px;
+}
+
+.skills-list{
+    list-style: none;
+}
+
+li{
+    margin: 0 0 10px 0;
+}
+
+
+.skills-name {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 200;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px 10px;
+}
+
+
+.skills-left{ 
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    float: left;
+    width: 50%;
+}
+
+.skills-right{
+    width: 50%;
+    float: right;
+}
+
+.skills-container{
+    width: 90%;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    margin-top: 10px;
+    height: 30px;
+}
+
+.skills-values{
+    height: 100%;
+    border-radius: 5px;
+    overflow: hidden;
+    color: white;
+    background-color: #3399ff
+}
+.skills-values p{
+    padding-top: 5px;
+    padding-left: 10px;
+    margin: 0px;
+}
+
+
+.skill-java{
+    width: 95%;
+}
+.skill-python{
+    width: 95%;
+}
+.skill-kotlin{
+    width: 80%;
+}
+.skill-php{
+    width: 60%;
+}
+
+@media screen and (max-width: 600px) {
+
+    .skills-left{
+        width: 100%;
+    }
+    .skills-right{
+        width: 100%;
+        float: none;
+    }
+  }
